@@ -25,6 +25,9 @@ namespace MyWeather.iOS
 
             LoadApplication(new App());
 
+            var csharp7Features = new CsharpSevenFeatures();
+            var csharp7Features1 = new CsharpSevenFeatures("UserName");
+
             return base.FinishedLaunching(app, options);
         }
 
