@@ -222,3 +222,7 @@ pip-log.txt
 
 #Mr Developer
 .mr.developer.cfg
+
+MyWeather\.userprefs
+
+MyWeather\.Droid/Resources/Resource\.designer\.cs
