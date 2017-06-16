@@ -50,7 +50,7 @@
         <Command>
           <type>BeforeBuild</type>
           <command>/bin/bash ./../BuildScripts/ios_prebuild_beta.sh</command>
-          <workingdir>${ProjectDir}</workingdir>
+          <workingdir></workingdir>
         </Command>
         <Command>
           <type>BeforeBuild</type>
