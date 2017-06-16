@@ -49,7 +49,7 @@
       <CustomCommands>
         <Command>
           <type>BeforeBuild</type>
-          <command>sh ../BuildScripts/ios_prebuild_beta.sh</command>
+          <command>/bin/sh ../BuildScripts/ios_prebuild_beta.sh</command>
           <workingdir>${ProjectDir}</workingdir>
         </Command>
       </CustomCommands>
