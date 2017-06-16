@@ -45,23 +45,10 @@
     <MtouchArch>ARMv7, ARM64</MtouchArch>
     <ConsolePause>false</ConsolePause>
     <CodesignKey>iPhone Distribution: Yury Nevalenny (AR36AR2PBF)</CodesignKey>
-    <CustomCommands>
-      <CustomCommands>
-        <Command>
-          <type>BeforeBuild</type>
-          <command>/bin/bash ./../BuildScripts/ios_prebuild_beta.sh || exit 1</command>
-          <workingdir></workingdir>
-        </Command>
-        <Command>
-          <type>BeforeBuild</type>
-          <command>echo 'PRE-BUILD-COMMAND' || exit 1</command>
-        </Command>
-      </CustomCommands>
-    </CustomCommands>
     <CodesignProvision>Pirate Spaceship Apps Comma</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup>
-    <PreBuildEvent>/bin/bash ./../../../../BuildScripts/ios_prebuild_beta.sh</PreBuildEvent>
+    <PreBuildEvent>/bin/bash ../../../../BuildScripts/ios_prebuild_beta.sh</PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>full</DebugType>
