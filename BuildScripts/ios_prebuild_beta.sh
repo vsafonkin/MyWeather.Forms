@@ -4,7 +4,7 @@ echo "-== Started ios prebuild script ==-"
 
 app_name="Slate Pages Beta"
 bundle_id="com.piratespaceship.myweather"
-plist_path="Info.plist"
+plist_path="../../../Info.plist"
 
 # exit if a command fails
 set -e || exit 1
