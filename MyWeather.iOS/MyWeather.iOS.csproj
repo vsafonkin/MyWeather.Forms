@@ -49,8 +49,12 @@
       <CustomCommands>
         <Command>
           <type>BeforeBuild</type>
-          <command>/bin/sh ../BuildScripts/ios_prebuild_beta.sh</command>
+          <command>/bin/bash ./../BuildScripts/ios_prebuild_beta.sh</command>
           <workingdir>${ProjectDir}</workingdir>
+        </Command>
+        <Command>
+          <type>BeforeBuild</type>
+          <command>/bin/bash -c "echo 'PRE-BUILD-COMMAND'"</command>
         </Command>
       </CustomCommands>
     </CustomCommands>
