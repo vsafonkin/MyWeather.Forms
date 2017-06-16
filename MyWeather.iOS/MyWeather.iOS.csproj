@@ -61,7 +61,7 @@
     <CodesignProvision>Pirate Spaceship Apps Comma</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup>
-    <PreBuildEvent>/bin/bash ./../BuildScripts/ios_prebuild_beta.sh</PreBuildEvent>
+    <PreBuildEvent>/bin/bash $(ProjectDir)/../BuildScripts/ios_prebuild_beta.sh</PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>full</DebugType>
