@@ -31,6 +31,7 @@ namespace MyWeather
         {
             base.OnStart();
             WriteLine("Application OnStart");
+            WriteLine($"{nameof(Plugin.Fingerprint)}");
         }
 
         protected override void OnSleep()
