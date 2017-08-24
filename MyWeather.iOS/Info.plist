@@ -4,8 +4,6 @@
 <dict>
 	<key>CFBundleDisplayName</key>
 	<string>MyWeather.iOS</string>
-	<key>CFBundleIdentifier</key>
-	<string>com.piratespaceship.myweather</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
@@ -50,5 +48,7 @@
 	<string>Location for closest weather.</string>
 	<key>CFBundleName</key>
 	<string>MyWeather.iOS</string>
+	<key>CFBundleIdentifier</key>
+	<string>meirav</string>
 </dict>
 </plist>
