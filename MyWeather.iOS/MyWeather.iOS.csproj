@@ -196,7 +196,6 @@
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
     <Compile Include="Helpers\Settings.cs" />
-    <Compile Include="Csharp7Features.cs" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\tab1.png" />
