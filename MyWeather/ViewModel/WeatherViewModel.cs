@@ -16,7 +16,7 @@ namespace MyWeather.ViewModels
     {
         WeatherService WeatherService { get; } = new WeatherService();
 
-        string location = Settings.City;
+        string location = Settings.GeneralSettings;
         public string Location
         {
             get { return location; }
@@ -107,7 +107,7 @@ namespace MyWeather.ViewModels
                 if (UseGPS)
                 {
 					
-                    var gps = await CrossGeolocator.Current.GetPositionAsync(10000);
+                    var gps = await CrossGeolocator.Current.GetPositionAsync(TimeSpan.FromMilliseconds(10000));
                     weatherRoot = await WeatherService.GetWeather(gps.Latitude, gps.Longitude, units);
                 }
                 else
