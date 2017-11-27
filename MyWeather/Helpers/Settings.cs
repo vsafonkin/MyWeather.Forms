@@ -45,7 +45,6 @@ namespace MyWeather.Helpers
             set => AppSettings.AddOrUpdateValue(IsImperialKey, value);
         } 
  
- 
         public static bool UseCity 
         {
             get => AppSettings.GetValueOrDefault(UseCityKey, UseCityDefault);
@@ -57,6 +56,7 @@ namespace MyWeather.Helpers
             get => AppSettings.GetValueOrDefault(CityKey, CityDefault);
             set => AppSettings.AddOrUpdateValue(CityKey, value);  
         } 
+
 		public static string GeneralSettings
 		{
             get => AppSettings.GetValueOrDefault(SettingsKey, SettingsDefault);

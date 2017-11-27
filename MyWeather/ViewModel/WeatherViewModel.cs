@@ -14,9 +14,9 @@ namespace MyWeather.ViewModels
 {
     public class WeatherViewModel : INotifyPropertyChanged
     {
-        WeatherService WeatherService { get; } = new WeatherService();
+        public WeatherService WeatherService { get; set; } = new WeatherService();
 
-        string location = Settings.GeneralSettings;
+        string location = Settings.City;
         public string Location
         {
             get { return location; }
@@ -39,9 +39,6 @@ namespace MyWeather.ViewModels
             }
         }
 
-
-
-
         bool isImperial = Settings.IsImperial;
         public bool IsImperial
         {
@@ -53,8 +50,6 @@ namespace MyWeather.ViewModels
                 Settings.IsImperial = value;
             }
         }
-
-
 
         string temp = string.Empty;
         public string Temp
@@ -70,8 +65,6 @@ namespace MyWeather.ViewModels
             set { condition = value; OnPropertyChanged(); }
         }
 
-
-
         bool isBusy = false;
         public bool IsBusy
         {
@@ -85,7 +78,6 @@ namespace MyWeather.ViewModels
             get { return forecast; }
             set { forecast = value; OnPropertyChanged(); }
         }
-
 
         ICommand getWeather;
         public ICommand GetWeatherCommand =>
@@ -106,7 +98,6 @@ namespace MyWeather.ViewModels
 
                 if (UseGPS)
                 {
-					
                     var gps = await CrossGeolocator.Current.GetPositionAsync(TimeSpan.FromMilliseconds(10000));
                     weatherRoot = await WeatherService.GetWeather(gps.Latitude, gps.Longitude, units);
                 }
@@ -115,7 +106,6 @@ namespace MyWeather.ViewModels
                     //Get weather by city
                     weatherRoot = await WeatherService.GetWeather(Location.Trim(), units);
                 }
-                
 
                 //Get forecast based on cityId
                 Forecast = await WeatherService.GetForecast(weatherRoot.CityId, units);
@@ -123,7 +113,10 @@ namespace MyWeather.ViewModels
                 var unit = IsImperial ? "F" : "C";
                 Temp = $"Temp: {weatherRoot?.MainWeather?.Temperature ?? 0}°{unit}";
                 Condition = $"{weatherRoot.Name}: {weatherRoot?.Weather?[0]?.Description ?? string.Empty}";
-                CrossTextToSpeech.Current.Speak(Temp + " " + Condition);
+                if (CrossTextToSpeech.IsSupported)
+                {
+                    CrossTextToSpeech.Current.Speak(Temp + " " + Condition);
+                }
             }
             catch (Exception ex)
             {

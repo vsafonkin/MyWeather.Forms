@@ -17,7 +17,7 @@ namespace MyWeather.Services
         const string WeatherCityUri = "http://api.openweathermap.org/data/2.5/weather?q={0}&units={1}&appid=fc9f6c524fc093759cd28d41fda89a1b";
         const string ForecaseUri = "http://api.openweathermap.org/data/2.5/forecast?id={0}&units={1}&appid=fc9f6c524fc093759cd28d41fda89a1b";
 
-        public async Task<WeatherRoot> GetWeather(double latitude, double longitude, Units units = Units.Imperial)
+        public virtual async Task<WeatherRoot> GetWeather(double latitude, double longitude, Units units = Units.Imperial)
         {
             using (var client = new HttpClient())
             {
@@ -32,7 +32,7 @@ namespace MyWeather.Services
 
         }
 
-        public async Task<WeatherRoot> GetWeather(string city, Units units = Units.Imperial)
+        public virtual async Task<WeatherRoot> GetWeather(string city, Units units = Units.Imperial)
         {
             using (var client = new HttpClient())
             {
@@ -47,7 +47,7 @@ namespace MyWeather.Services
 
         }
 
-        public async Task<WeatherForecastRoot> GetForecast(int id, Units units = Units.Imperial)
+        public virtual async Task<WeatherForecastRoot> GetForecast(int id, Units units = Units.Imperial)
         {
             using (var client = new HttpClient())
             {
