@@ -17,6 +17,7 @@ local.properties
 .loadpath
 mobile.userprefs
 .nuget
+TestResult.xml
 
 # External tool builders
 .externalToolBuilders/
