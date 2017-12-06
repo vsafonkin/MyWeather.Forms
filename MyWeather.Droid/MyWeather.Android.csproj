@@ -2,6 +2,7 @@
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="..\packages\Xamarin.Forms.2.5.0.91635\build\netstandard1.0\Xamarin.Forms.props" Condition="Exists('..\packages\Xamarin.Forms.2.5.0.91635\build\netstandard1.0\Xamarin.Forms.props')" />
     <PropertyGroup><AndroidSdkBuildToolsVersion>27.0.0</AndroidSdkBuildToolsVersion><AndroidEnableMultiDex>true</AndroidEnableMultiDex>
+<AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
 </PropertyGroup>
 	<PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -32,6 +33,7 @@
     <WarningLevel>4</WarningLevel>
     <AndroidLinkMode>None</AndroidLinkMode>
     <ConsolePause>false</ConsolePause>
+    <EmbedAssembliesIntoApk>true</EmbedAssembliesIntoApk>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>full</DebugType>
@@ -39,13 +41,15 @@
     <OutputPath>bin\Release</OutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
     <ConsolePause>false</ConsolePause>
     <AndroidKeyStore>True</AndroidKeyStore>
     <AndroidSigningKeyStore>sandbox.keystore</AndroidSigningKeyStore>
     <AndroidSigningStorePass>sandbox</AndroidSigningStorePass>
     <AndroidSigningKeyAlias>sandbox</AndroidSigningKeyAlias>
     <AndroidSigningKeyPass>sandbox</AndroidSigningKeyPass>
+    <AndroidLinkMode>Full</AndroidLinkMode>
+    <EnableProguard>true</EnableProguard>
+    <AndroidSupportedAbis>armeabi-v7a;arm64-v8a;x86_64</AndroidSupportedAbis>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Plugin.CurrentActivity, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
