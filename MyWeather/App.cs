@@ -1,4 +1,5 @@
-﻿using MyWeather.View;
+﻿using MyWeather.Shared;
+using MyWeather.View;
 using MyWeather.ViewModels;
 using Xamarin.Forms;
 using static System.Diagnostics.Debug;
@@ -9,6 +10,8 @@ namespace MyWeather
     {
         public App()
         {
+            var csharp71 = new MyClass();
+
             var tabs = new TabbedPage
             {
                 Title ="My Weather",

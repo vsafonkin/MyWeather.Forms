@@ -32,4 +32,5 @@
     <PackageReference Include="Xam.Plugins.TextToSpeech" Version="3.0.1" />
   </ItemGroup>
 
+  <Import Project="..\MyWeather.Shared\MyWeather.Shared.projitems" Label="Shared" Condition="Exists('..\MyWeather.Shared\MyWeather.Shared.projitems')" />
 </Project>
