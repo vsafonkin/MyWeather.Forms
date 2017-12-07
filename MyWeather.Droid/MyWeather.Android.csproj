@@ -51,8 +51,9 @@
     <AndroidLinkMode>SdkOnly</AndroidLinkMode>
     <JavaMaximumHeapSize>1G</JavaMaximumHeapSize>
     <LangVersion>7.1</LangVersion>
-    <EmbedAssembliesIntoApk>true</EmbedAssembliesIntoApk>
+    <EmbedAssembliesIntoApk>false</EmbedAssembliesIntoApk>
     <BundleAssemblies>true</BundleAssemblies>
+    <AndroidSupportedAbis>x86</AndroidSupportedAbis>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Plugin.CurrentActivity, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
