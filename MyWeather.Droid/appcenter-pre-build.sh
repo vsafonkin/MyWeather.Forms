@@ -1,0 +1,1 @@
+echo '##vso[task.setvariable variable=PATH;]'$HOME/Library/Android/sdk/android-ndk-r15c:$PATH

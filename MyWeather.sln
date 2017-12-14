@@ -16,6 +16,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{5A1D5F98-708E-4BE5-B5B2-51689A806278}"
 	ProjectSection(SolutionItems) = preProject
 		appcenter-post-build.sh = appcenter-post-build.sh
+		MyWeather.Droid\appcenter-pre-build.sh = MyWeather.Droid\appcenter-pre-build.sh
 	EndProjectSection
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "MyWeather.Shared", "MyWeather.Shared\MyWeather.Shared.shproj", "{95FC879B-E9E4-4EDB-973A-113C7AB40A20}"
