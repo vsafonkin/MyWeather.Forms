@@ -1,0 +1,792 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Xamarin.Build.Download.0.4.7\build\Xamarin.Build.Download.props" Condition="Exists('..\packages\Xamarin.Build.Download.0.4.7\build\Xamarin.Build.Download.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
+    <ProjectGuid>{6B040462-A208-4268-9985-D37A2138D20D}</ProjectGuid>
+    <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>UrbanCut.iOS</RootNamespace>
+    <AssemblyName>UrbanCut.iOS</AssemblyName>
+    <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\iPhoneSimulator\Debug</OutputPath>
+    <DefineConstants>DEBUG;ENABLE_TEST_CLOUD;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodesignKey>iPhone Developer: Uffe Brunø Lindstrøm (7RAA7383HU)</CodesignKey>
+    <MtouchDebug>true</MtouchDebug>
+    <MtouchNoSymbolStrip>true</MtouchNoSymbolStrip>
+    <MtouchFastDev>true</MtouchFastDev>
+    <IOSDebuggerPort>58361</IOSDebuggerPort>
+    <MtouchLink>SdkOnly</MtouchLink>
+    <MtouchArch>i386, x86_64</MtouchArch>
+    <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodesignProvision>UrbanCut Development</CodesignProvision>
+    <CodesignEntitlements></CodesignEntitlements>
+    <MtouchExtraArgs>--registrar:static</MtouchExtraArgs>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\iPhone\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodesignKey>iPhone Distribution: Urbancut ApS (726SNVF4KS)</CodesignKey>
+    <MtouchFloat32>true</MtouchFloat32>
+    <CodesignEntitlements>Entitlements-production.plist</CodesignEntitlements>
+    <MtouchLink>SdkOnly</MtouchLink>
+    <MtouchArch>ARMv7, ARM64</MtouchArch>
+    <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodesignProvision>UrbanCut Distribution</CodesignProvision>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\iPhoneSimulator\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodesignKey>iPhone Distribution: Urbancut ApS (726SNVF4KS)</CodesignKey>
+    <MtouchNoSymbolStrip>true</MtouchNoSymbolStrip>
+    <MtouchLink>None</MtouchLink>
+    <MtouchArch>i386, x86_64</MtouchArch>
+    <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodesignProvision>UrbanCut Distribution</CodesignProvision>
+    <CodesignEntitlements></CodesignEntitlements>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\iPhone\Debug</OutputPath>
+    <DefineConstants>DEBUG;ENABLE_TEST_CLOUD;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodesignKey>iPhone Developer: Uffe Brunø Lindstrøm (7RAA7383HU)</CodesignKey>
+    <DeviceSpecificBuild>true</DeviceSpecificBuild>
+    <MtouchDebug>true</MtouchDebug>
+    <MtouchNoSymbolStrip>true</MtouchNoSymbolStrip>
+    <MtouchFastDev>true</MtouchFastDev>
+    <MtouchFloat32>true</MtouchFloat32>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <IOSDebuggerPort>26347</IOSDebuggerPort>
+    <MtouchLink>SdkOnly</MtouchLink>
+    <MtouchArch>ARMv7, ARM64</MtouchArch>
+    <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodesignProvision>UrbanCut Development</CodesignProvision>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="Xamarin.iOS" />
+    <Reference Include="SQLite-net">
+      <HintPath>..\packages\sqlite-net-pcl.1.4.118\lib\netstandard1.1\SQLite-net.dll</HintPath>
+    </Reference>
+    <Reference Include="SDWebImage">
+      <HintPath>..\packages\Xamarin.SDWebImage.3.7.5\lib\Xamarin.iOS\SDWebImage.dll</HintPath>
+    </Reference>
+    <Reference Include="Facebook">
+      <HintPath>..\packages\Xamarin.Facebook.iOS.4.27.1\lib\Xamarin.iOS10\Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="ZXing.Net.Mobile.Core">
+      <HintPath>..\packages\ZXing.Net.Mobile.2.3.2\lib\Xamarin.iOS10\ZXing.Net.Mobile.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="zxing.portable">
+      <HintPath>..\packages\ZXing.Net.Mobile.2.3.2\lib\Xamarin.iOS10\zxing.portable.dll</HintPath>
+    </Reference>
+    <Reference Include="ZXingNetMobile">
+      <HintPath>..\packages\ZXing.Net.Mobile.2.3.2\lib\Xamarin.iOS10\ZXingNetMobile.dll</HintPath>
+    </Reference>
+    <Reference Include="SQLitePCLRaw.core">
+      <HintPath>..\packages\SQLitePCLRaw.core.1.1.9\lib\Xamarin.iOS10\SQLitePCLRaw.core.dll</HintPath>
+    </Reference>
+    <Reference Include="SQLitePCLRaw.provider.sqlite3">
+      <HintPath>..\packages\SQLitePCLRaw.provider.sqlite3.ios_unified.1.1.9\lib\Xamarin.iOS10\SQLitePCLRaw.provider.sqlite3.dll</HintPath>
+    </Reference>
+    <Reference Include="SQLitePCLRaw.batteries_green">
+      <HintPath>..\packages\SQLitePCLRaw.bundle_green.1.1.9\lib\Xamarin.iOS10\SQLitePCLRaw.batteries_green.dll</HintPath>
+    </Reference>
+    <Reference Include="SQLitePCLRaw.batteries_v2">
+      <HintPath>..\packages\SQLitePCLRaw.bundle_green.1.1.9\lib\Xamarin.iOS10\SQLitePCLRaw.batteries_v2.dll</HintPath>
+    </Reference>
+    <Reference Include="Com.OneSignal.Abstractions">
+      <HintPath>..\packages\Com.OneSignal.3.0.1\lib\Xamarin.iOS10\Com.OneSignal.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Com.OneSignal">
+      <HintPath>..\packages\Com.OneSignal.3.0.1\lib\Xamarin.iOS10\Com.OneSignal.dll</HintPath>
+    </Reference>
+    <Reference Include="OneSignal.iOS.Binding">
+      <HintPath>..\packages\Com.OneSignal.3.0.1\lib\Xamarin.iOS10\OneSignal.iOS.Binding.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.iOS.DGActivityIndicatorViewBinding">
+      <HintPath>..\packages\Xamarin.iOS.DGActivityIndicatorView.1.0.0\lib\Xamarin.iOS10\Xamarin.iOS.DGActivityIndicatorViewBinding.dll</HintPath>
+    </Reference>
+    <Reference Include="GetiOSModel">
+      <HintPath>..\packages\dannycabrera.GetiOSModel.1.3.0\lib\xamarinios10\GetiOSModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Maps">
+      <HintPath>..\packages\Xamarin.Google.iOS.Maps.2.5.0\lib\Xamarin.iOS10\Google.Maps.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AppCenter">
+      <HintPath>..\packages\Microsoft.AppCenter.1.1.0\lib\Xamarin.iOS10\Microsoft.AppCenter.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AppCenter.iOS.Bindings">
+      <HintPath>..\packages\Microsoft.AppCenter.1.1.0\lib\Xamarin.iOS10\Microsoft.AppCenter.iOS.Bindings.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AppCenter.Analytics">
+      <HintPath>..\packages\Microsoft.AppCenter.Analytics.1.1.0\lib\Xamarin.iOS10\Microsoft.AppCenter.Analytics.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AppCenter.Analytics.iOS.Bindings">
+      <HintPath>..\packages\Microsoft.AppCenter.Analytics.1.1.0\lib\Xamarin.iOS10\Microsoft.AppCenter.Analytics.iOS.Bindings.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AppCenter.Crashes">
+      <HintPath>..\packages\Microsoft.AppCenter.Crashes.1.1.0\lib\Xamarin.iOS10\Microsoft.AppCenter.Crashes.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AppCenter.Crashes.iOS.Bindings">
+      <HintPath>..\packages\Microsoft.AppCenter.Crashes.1.1.0\lib\Xamarin.iOS10\Microsoft.AppCenter.Crashes.iOS.Bindings.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.Connectivity.Abstractions">
+      <HintPath>..\packages\Xam.Plugin.Connectivity.3.0.3\lib\Xamarin.iOS10\Plugin.Connectivity.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.Connectivity">
+      <HintPath>..\packages\Xam.Plugin.Connectivity.3.0.3\lib\Xamarin.iOS10\Plugin.Connectivity.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\UrbanCut\UrbanCut.csproj">
+      <Project>{68D1DA29-033E-439F-BF8E-A0EEDE143048}</Project>
+      <Name>UrbanCut</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ImageAsset Include="Assets.xcassets\arrow_left_white.imageset\arrow_left_white%402x.png" />
+    <ImageAsset Include="Assets.xcassets\arrow_left_white.imageset\arrow_left_white%403x.png" />
+    <ImageAsset Include="Assets.xcassets\arrow_left_white.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\arrow_right_green.imageset\arrow_right_green%402x.png" />
+    <ImageAsset Include="Assets.xcassets\arrow_right_green.imageset\arrow_right_green%403x.png" />
+    <ImageAsset Include="Assets.xcassets\arrow_right_green.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\arrow_right_white.imageset\arrow_right_white%402x.png" />
+    <ImageAsset Include="Assets.xcassets\arrow_right_white.imageset\arrow_right_white%403x.png" />
+    <ImageAsset Include="Assets.xcassets\arrow_right_white.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\badge_most_popular.imageset\badge_most_popular%402x.png" />
+    <ImageAsset Include="Assets.xcassets\badge_most_popular.imageset\badge_most_popular%403x.png" />
+    <ImageAsset Include="Assets.xcassets\badge_most_popular.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\bg_login_select_subscription.imageset\bg_login_select_subscription%402x.png" />
+    <ImageAsset Include="Assets.xcassets\bg_login_select_subscription.imageset\bg_login_select_subscription%403x.png" />
+    <ImageAsset Include="Assets.xcassets\bg_login_select_subscription.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\bg_login_welcome.imageset\bg_login_welcome%402x.png" />
+    <ImageAsset Include="Assets.xcassets\bg_login_welcome.imageset\bg_login_welcome%403x.png" />
+    <ImageAsset Include="Assets.xcassets\bg_login_welcome.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\btn_confirm_checked.imageset\btn_confirm_checked%402x.png" />
+    <ImageAsset Include="Assets.xcassets\btn_confirm_checked.imageset\btn_confirm_checked%403x.png" />
+    <ImageAsset Include="Assets.xcassets\btn_confirm_checked.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\btn_confirm_unchecked.imageset\btn_confirm_unchecked%402x.png" />
+    <ImageAsset Include="Assets.xcassets\btn_confirm_unchecked.imageset\btn_confirm_unchecked%403x.png" />
+    <ImageAsset Include="Assets.xcassets\btn_confirm_unchecked.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\btn_filter.imageset\btn_filter%402x.png" />
+    <ImageAsset Include="Assets.xcassets\btn_filter.imageset\btn_filter%403x.png" />
+    <ImageAsset Include="Assets.xcassets\btn_filter.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\btn_filter_white.imageset\btn_filter_white%402x.png" />
+    <ImageAsset Include="Assets.xcassets\btn_filter_white.imageset\btn_filter_white%403x.png" />
+    <ImageAsset Include="Assets.xcassets\btn_filter_white.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\btn_search.imageset\btn_search%402x.png" />
+    <ImageAsset Include="Assets.xcassets\btn_search.imageset\btn_search%403x.png" />
+    <ImageAsset Include="Assets.xcassets\btn_search.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\btn_video_play.imageset\btn_video_play%402x.png" />
+    <ImageAsset Include="Assets.xcassets\btn_video_play.imageset\btn_video_play%403x.png" />
+    <ImageAsset Include="Assets.xcassets\btn_video_play.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\checkmark_white.imageset\checkmark_white%402x.png" />
+    <ImageAsset Include="Assets.xcassets\checkmark_white.imageset\checkmark_white%403x.png" />
+    <ImageAsset Include="Assets.xcassets\checkmark_white.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\icon_advertising_green.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\icon_advertising_green.imageset\icon_advertising_green%402x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_advertising_green.imageset\icon_advertising_green%403x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_advertising_white.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\icon_advertising_white.imageset\icon_advertising_white%402x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_advertising_white.imageset\icon_advertising_white%403x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_checkmark_green.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\icon_checkmark_green.imageset\icon_checkmark_green%402x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_checkmark_green.imageset\icon_checkmark_green%403x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_house_green.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\icon_house_green.imageset\icon_house_green%402x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_house_green.imageset\icon_house_green%403x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_like_green.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\icon_like_green.imageset\icon_like_green%402x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_like_green.imageset\icon_like_green%403x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_like_white.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\icon_like_white.imageset\icon_like_white%402x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_like_white.imageset\icon_like_white%403x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_location_green.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\icon_location_green.imageset\icon_location_green%402x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_location_green.imageset\icon_location_green%403x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_location_green_large.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\icon_location_green_large.imageset\icon_location_green_large%402x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_location_green_large.imageset\icon_location_green_large%403x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_location_white_large.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\icon_location_white_large.imageset\icon_location_white_large%402x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_location_white_large.imageset\icon_location_white_large%403x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_phone_green.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\icon_phone_green.imageset\icon_phone_green%402x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_phone_green.imageset\icon_phone_green%403x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_scissor_green.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\icon_scissor_green.imageset\icon_scissor_green%402x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_scissor_green.imageset\icon_scissor_green%403x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_scissor_up_large_white.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\icon_scissor_up_large_white.imageset\icon_scissor_up_large_white%402x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_scissor_up_large_white.imageset\icon_scissor_up_large_white%403x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_scissor_up_white.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\icon_scissor_up_white.imageset\icon_scissor_up_white%402x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_scissor_up_white.imageset\icon_scissor_up_white%403x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_scissor_white.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\icon_scissor_white.imageset\icon_scissor_white%402x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_scissor_white.imageset\icon_scissor_white%403x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_star_green.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\icon_star_green.imageset\icon_star_green%402x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_star_green.imageset\icon_star_green%403x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_star_green_large.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\icon_star_green_large.imageset\icon_star_green_large%402x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_star_green_large.imageset\icon_star_green_large%403x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_star_grey.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\icon_star_grey.imageset\icon_star_grey%402x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_star_grey.imageset\icon_star_grey%403x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_star_grey_large.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\icon_star_grey_large.imageset\icon_star_grey_large%402x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_star_grey_large.imageset\icon_star_grey_large%403x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_star_half.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\icon_star_half.imageset\icon_star_half%402x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_star_half.imageset\icon_star_half%403x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_star_half_large.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\icon_star_half_large.imageset\icon_star_half_large%402x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_star_half_large.imageset\icon_star_half_large%403x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_user_green.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\icon_user_green.imageset\icon_user_green%402x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_user_green.imageset\icon_user_green%403x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_user_white.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\icon_user_white.imageset\icon_user_white%402x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_user_white.imageset\icon_user_white%403x.png" />
+    <ImageAsset Include="Assets.xcassets\img_green.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\img_green.imageset\img_green%402x.png" />
+    <ImageAsset Include="Assets.xcassets\img_green.imageset\img_green%403x.png" />
+    <ImageAsset Include="Assets.xcassets\logo_urban_cut_large.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\logo_urban_cut_large.imageset\logo_urban_cut_large%402x.png" />
+    <ImageAsset Include="Assets.xcassets\logo_urban_cut_large.imageset\logo_urban_cut_large%403x.png" />
+    <ImageAsset Include="Assets.xcassets\logo_urban_cut_topbar.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\logo_urban_cut_topbar.imageset\logo_urban_cut_topbar%402x.png" />
+    <ImageAsset Include="Assets.xcassets\logo_urban_cut_topbar.imageset\logo_urban_cut_topbar%403x.png" />
+    <ImageAsset Include="Assets.xcassets\payment_options.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\payment_options.imageset\payment_options%402x.png" />
+    <ImageAsset Include="Assets.xcassets\payment_options.imageset\payment_options%403x.png" />
+    <ImageAsset Include="Assets.xcassets\placeholder_cover.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\placeholder_cover.imageset\placeholder_cover%402x.jpg" />
+    <ImageAsset Include="Assets.xcassets\placeholder_cover.imageset\placeholder_cover%403x.jpg" />
+    <ImageAsset Include="Assets.xcassets\placeholder_thumbnail.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\placeholder_thumbnail.imageset\placeholder_thumbnail%402x.jpg" />
+    <ImageAsset Include="Assets.xcassets\placeholder_thumbnail.imageset\placeholder_thumbnail%403x.jpg" />
+    <ImageAsset Include="Assets.xcassets\video_thumbnail.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\video_thumbnail.imageset\video_thumbnail%402x.png" />
+    <ImageAsset Include="Assets.xcassets\video_thumbnail.imageset\video_thumbnail%403x.png" />
+    <ImageAsset Include="Assets.xcassets\btn_voucher_refresh.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\btn_voucher_refresh.imageset\btn_voucher_refresh%402x.png" />
+    <ImageAsset Include="Assets.xcassets\btn_voucher_refresh.imageset\btn_voucher_refresh%403x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_checkmark_white_large.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\icon_checkmark_white_large.imageset\icon_checkmark_white_large%402x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_checkmark_white_large.imageset\icon_checkmark_white_large%403x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_cross.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\icon_cross.imageset\icon_cross%402x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_cross.imageset\icon_cross%403x.png" />
+    <ImageAsset Include="Assets.xcassets\temp_qr_code.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\temp_qr_code.imageset\temp_qr_code%402x.png" />
+    <ImageAsset Include="Assets.xcassets\temp_qr_code.imageset\temp_qr_code%403x.png" />
+    <ImageAsset Include="Assets.xcassets\admin_logo.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\admin_logo.imageset\admin_logo%402x.png" />
+    <ImageAsset Include="Assets.xcassets\admin_logo.imageset\admin_logo%403x.png" />
+    <ImageAsset Include="Assets.xcassets\bg_admin.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\bg_admin.imageset\bg_admin%402x.png" />
+    <ImageAsset Include="Assets.xcassets\bg_admin.imageset\bg_admin%403x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_cross_large_white.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\icon_cross_large_white.imageset\icon_cross_large_white%402x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_cross_large_white.imageset\icon_cross_large_white%403x.png" />
+    <ImageAsset Include="Assets.xcassets\img_red.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\img_red.imageset\img_red%402x.png" />
+    <ImageAsset Include="Assets.xcassets\img_red.imageset\img_red%403x.png" />
+    <ImageAsset Include="Assets.xcassets\bg_gradient_10_pct_opacity.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\bg_gradient_10_pct_opacity.imageset\bg_gradient_10_pct_opacity%402x.png" />
+    <ImageAsset Include="Assets.xcassets\bg_gradient_10_pct_opacity.imageset\bg_gradient_10_pct_opacity%403x.png" />
+    <ImageAsset Include="Assets.xcassets\map_salon_marker.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\map_salon_marker.imageset\map_salon_marker%402x.png" />
+    <ImageAsset Include="Assets.xcassets\map_salon_marker.imageset\map_salon_marker%403x.png" />
+    <ImageAsset Include="Assets.xcassets\map_user_marker.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\map_user_marker.imageset\map_user_marker%402x.png" />
+    <ImageAsset Include="Assets.xcassets\map_user_marker.imageset\map_user_marker%403x.png" />
+    <ImageAsset Include="Assets.xcassets\web_backward_disabled.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\web_backward.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\web_forward_disabled.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\web_backward.imageset\web_backward%402x.png" />
+    <ImageAsset Include="Assets.xcassets\web_backward.imageset\web_backward%403x.png" />
+    <ImageAsset Include="Assets.xcassets\web_backward_disabled.imageset\web_backward_disabled%402x.png" />
+    <ImageAsset Include="Assets.xcassets\web_backward_disabled.imageset\web_backward_disabled%403x.png" />
+    <ImageAsset Include="Assets.xcassets\web_forward_disabled.imageset\web_forward_disabled%402x.png" />
+    <ImageAsset Include="Assets.xcassets\web_forward_disabled.imageset\web_forward_disabled%403x.png" />
+    <ImageAsset Include="Assets.xcassets\web_forward.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\web_refresh.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\web_forward.imageset\web_forward%402x.png" />
+    <ImageAsset Include="Assets.xcassets\web_forward.imageset\web_forward%403x.png" />
+    <ImageAsset Include="Assets.xcassets\web_refresh.imageset\web_refresh%402x.png" />
+    <ImageAsset Include="Assets.xcassets\web_refresh.imageset\web_refresh%403x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_phone_white_large.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\icon_phone_white_large.imageset\icon_phone_white_large%402x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_phone_white_large.imageset\icon_phone_white_large%403x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_hand_white_large.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\icon_hand_white_large.imageset\icon_hand_white_large%402x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_hand_white_large.imageset\icon_hand_white_large%403x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_rating_star_green_large.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\icon_rating_star_green_large.imageset\icon_rating_star_green_large%402x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_rating_star_green_large.imageset\icon_rating_star_green_large%403x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_rating_star_grey_large.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\icon_rating_star_grey_large.imageset\icon_rating_star_grey_large%402x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_rating_star_grey_large.imageset\icon_rating_star_grey_large%403x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_star_white_large.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\icon_star_white_large.imageset\icon_star_white_large%402x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_star_white_large.imageset\icon_star_white_large%403x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_arrow_up_down_white_large.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\icon_arrow_up_down_white_large.imageset\icon_arrow_up_down_white_large%402x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_arrow_up_down_white_large.imageset\icon_arrow_up_down_white_large%403x.png" />
+    <ImageAsset Include="Resources\Icons.xcassets\Contents.json" />
+    <ImageAsset Include="Resources\Icons.xcassets\AppIcon.appiconset\Contents.json" />
+    <ImageAsset Include="Resources\Icons.xcassets\AppIcon.appiconset\Icon-App-20x20%401x.png" />
+    <ImageAsset Include="Resources\Icons.xcassets\AppIcon.appiconset\Icon-App-20x20%402x.png" />
+    <ImageAsset Include="Resources\Icons.xcassets\AppIcon.appiconset\Icon-App-20x20%403x.png" />
+    <ImageAsset Include="Resources\Icons.xcassets\AppIcon.appiconset\Icon-App-29x29%401x.png" />
+    <ImageAsset Include="Resources\Icons.xcassets\AppIcon.appiconset\Icon-App-29x29%402x.png" />
+    <ImageAsset Include="Resources\Icons.xcassets\AppIcon.appiconset\Icon-App-29x29%403x.png" />
+    <ImageAsset Include="Resources\Icons.xcassets\AppIcon.appiconset\Icon-App-40x40%401x.png" />
+    <ImageAsset Include="Resources\Icons.xcassets\AppIcon.appiconset\Icon-App-40x40%402x.png" />
+    <ImageAsset Include="Resources\Icons.xcassets\AppIcon.appiconset\Icon-App-40x40%403x.png" />
+    <ImageAsset Include="Resources\Icons.xcassets\AppIcon.appiconset\Icon-App-57x57%401x.png" />
+    <ImageAsset Include="Resources\Icons.xcassets\AppIcon.appiconset\Icon-App-57x57%402x.png" />
+    <ImageAsset Include="Resources\Icons.xcassets\AppIcon.appiconset\Icon-App-60x60%401x.png" />
+    <ImageAsset Include="Resources\Icons.xcassets\AppIcon.appiconset\Icon-App-60x60%402x.png" />
+    <ImageAsset Include="Resources\Icons.xcassets\AppIcon.appiconset\Icon-App-60x60%403x.png" />
+    <ImageAsset Include="Resources\Icons.xcassets\AppIcon.appiconset\Icon-App-72x72%401x.png" />
+    <ImageAsset Include="Resources\Icons.xcassets\AppIcon.appiconset\Icon-App-72x72%402x.png" />
+    <ImageAsset Include="Resources\Icons.xcassets\AppIcon.appiconset\Icon-App-76x76%401x.png" />
+    <ImageAsset Include="Resources\Icons.xcassets\AppIcon.appiconset\Icon-App-76x76%402x.png" />
+    <ImageAsset Include="Resources\Icons.xcassets\AppIcon.appiconset\Icon-App-76x76%403x.png" />
+    <ImageAsset Include="Resources\Icons.xcassets\AppIcon.appiconset\Icon-App-83.5x83.5%402x.png" />
+    <ImageAsset Include="Resources\Icons.xcassets\AppIcon.appiconset\Icon-Small-50x50%401x.png" />
+    <ImageAsset Include="Resources\Icons.xcassets\AppIcon.appiconset\Icon-Small-50x50%402x.png" />
+    <ImageAsset Include="Resources\Icons.xcassets\AppIcon.appiconset\ItunesArtwork%402x.png" />
+    <ImageAsset Include="Assets.xcassets\btn_back.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\btn_back.imageset\btn_back%402x.png" />
+    <ImageAsset Include="Assets.xcassets\btn_back.imageset\btn_back%403x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_scissor_up_white_large.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\icon_scissor_up_white_large.imageset\icon_scissor_up_white_large%402x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_scissor_up_white_large.imageset\icon_scissor_up_white_large%403x.png" />
+    <ImageAsset Include="Assets.xcassets\img_grey.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\img_grey.imageset\img_grey%402x.png" />
+    <ImageAsset Include="Assets.xcassets\img_grey.imageset\img_grey%403x.png" />
+    <ImageAsset Include="Assets.xcassets\img_darkgrey.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\img_darkgrey.imageset\img_darkgrey%402x.png" />
+    <ImageAsset Include="Assets.xcassets\img_darkgrey.imageset\img_darkgrey%403x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_calendar.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\icon_calendar.imageset\icon_calendar%402x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_calendar.imageset\icon_calendar%403x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_downgrade.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\icon_downgrade.imageset\icon_downgrade%402x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_downgrade.imageset\icon_downgrade%403x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_update.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\icon_update.imageset\icon_update%402x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_update.imageset\icon_update%403x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_upgrade.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\icon_upgrade.imageset\icon_upgrade%402x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_upgrade.imageset\icon_upgrade%403x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_sink_up_white_large.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\icon_sink_up_white_large.imageset\icon_sink_up_white_large%403x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_sink_up_white_large.imageset\icon_sink_up_white_large%402x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_qr_code.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\icon_qr_code.imageset\icon_qr_code%402x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_qr_code.imageset\icon_qr_code%403x.png" />
+    <ImageAsset Include="Assets.xcassets\img_light_grey.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\img_light_grey.imageset\img_light_grey%402x.png" />
+    <ImageAsset Include="Assets.xcassets\img_light_grey.imageset\img_light_grey%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\" />
+    <Folder Include="Salon\" />
+    <Folder Include="Login\" />
+    <Folder Include="Assets.xcassets\bg_login_welcome.imageset\" />
+    <Folder Include="Util\" />
+    <Folder Include="Resources\Fonts\" />
+    <Folder Include="UIViews\" />
+    <Folder Include="Delegates\" />
+    <Folder Include="Assets.xcassets\arrow_left_white.imageset\" />
+    <Folder Include="Assets.xcassets\arrow_right_white.imageset\" />
+    <Folder Include="Assets.xcassets\arrow_right_green.imageset\" />
+    <Folder Include="Admin\" />
+    <Folder Include="News\" />
+    <Folder Include="Profile\" />
+    <Folder Include="Assets.xcassets\" />
+    <Folder Include="Popups\" />
+    <Folder Include="Assets.xcassets\btn_voucher_refresh.imageset\" />
+    <Folder Include="Assets.xcassets\icon_checkmark_white_large.imageset\" />
+    <Folder Include="Assets.xcassets\icon_cross.imageset\" />
+    <Folder Include="Assets.xcassets\temp_qr_code.imageset\" />
+    <Folder Include="Assets.xcassets\admin_logo.imageset\" />
+    <Folder Include="Assets.xcassets\bg_admin.imageset\" />
+    <Folder Include="Assets.xcassets\icon_cross_large_white.imageset\" />
+    <Folder Include="Assets.xcassets\img_red.imageset\" />
+    <Folder Include="Assets.xcassets\bg_gradient_10_pct_opacity.imageset\" />
+    <Folder Include="Assets.xcassets\map_salon_marker.imageset\" />
+    <Folder Include="Assets.xcassets\map_user_marker.imageset\" />
+    <Folder Include="Assets.xcassets\web_backward_disabled.imageset\" />
+    <Folder Include="Assets.xcassets\web_backward.imageset\" />
+    <Folder Include="Assets.xcassets\web_forward_disabled.imageset\" />
+    <Folder Include="Assets.xcassets\web_forward.imageset\" />
+    <Folder Include="Assets.xcassets\web_refresh.imageset\" />
+    <Folder Include="Assets.xcassets\icon_phone_white_large.imageset\" />
+    <Folder Include="Assets.xcassets\icon_hand_white_large.imageset\" />
+    <Folder Include="Assets.xcassets\icon_rating_star_green_large.imageset\" />
+    <Folder Include="Assets.xcassets\icon_rating_star_grey_large.imageset\" />
+    <Folder Include="Assets.xcassets\icon_star_white_large.imageset\" />
+    <Folder Include="Assets.xcassets\icon_arrow_up_down_white_large.imageset\" />
+    <Folder Include="Assets.xcassets\btn_back.imageset\" />
+    <Folder Include="Assets.xcassets\icon_scissor_up_white_large.imageset\" />
+    <Folder Include="Assets.xcassets\img_grey.imageset\" />
+    <Folder Include="Assets.xcassets\img_darkgrey.imageset\" />
+    <Folder Include="Assets.xcassets\icon_calendar.imageset\" />
+    <Folder Include="Assets.xcassets\icon_downgrade.imageset\" />
+    <Folder Include="Assets.xcassets\icon_update.imageset\" />
+    <Folder Include="Assets.xcassets\icon_upgrade.imageset\" />
+    <Folder Include="Assets.xcassets\icon_sink_up_white_large.imageset\" />
+    <Folder Include="Assets.xcassets\icon_qr_code.imageset\" />
+    <Folder Include="Assets.xcassets\img_light_grey.imageset\" />
+    <Folder Include="Resources\Sounds\" />
+    <Folder Include="Resources\Videos\" />
+  </ItemGroup>
+  <ItemGroup>
+    <InterfaceDefinition Include="LaunchScreen.storyboard" />
+    <InterfaceDefinition Include="Main.storyboard" />
+    <InterfaceDefinition Include="UIViews\CustomerTabBarMenu.xib" />
+    <InterfaceDefinition Include="UIViews\UCTextfieldView.xib" />
+    <InterfaceDefinition Include="Popups\VoucherView.xib" />
+    <InterfaceDefinition Include="Popups\ScanVoucherView.xib" />
+    <InterfaceDefinition Include="Popups\BookingView.xib" />
+    <InterfaceDefinition Include="Popups\SalonRatingView.xib" />
+    <InterfaceDefinition Include="Popups\AdminSelectionView.xib" />
+    <InterfaceDefinition Include="UIViews\MultilineBorderButton.xib" />
+    <InterfaceDefinition Include="Popups\LogoutView.xib" />
+    <InterfaceDefinition Include="Popups\BuyExtraView.xib" />
+    <InterfaceDefinition Include="UIViews\NotificationView.xib" />
+    <InterfaceDefinition Include="UIViews\SelectSubscriptionView.xib" />
+    <InterfaceDefinition Include="Popups\MessageView.xib" />
+    <InterfaceDefinition Include="Popups\DeleteUserView.xib" />
+    <InterfaceDefinition Include="Popups\SelectDateView.xib" />
+    <InterfaceDefinition Include="Popups\UpgradeDowngradeView.xib" />
+    <InterfaceDefinition Include="Popups\UpdateAppView.xib" />
+    <InterfaceDefinition Include="UIViews\SelectDistanceView.xib" />
+    <InterfaceDefinition Include="Popups\LoadingView.xib" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Info.plist" />
+    <None Include="Entitlements.plist" />
+    <None Include="packages.config" />
+    <None Include="Entitlements-production.plist" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Main.cs" />
+    <Compile Include="AppDelegate.cs" />
+    <Compile Include="MainViewController.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="MainViewController.designer.cs">
+      <DependentUpon>MainViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Login\LoginSubscriptionViewController.cs" />
+    <Compile Include="Login\LoginSubscriptionViewController.designer.cs">
+      <DependentUpon>LoginSubscriptionViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Login\LoginWelcomeViewController.cs" />
+    <Compile Include="Login\LoginWelcomeViewController.designer.cs">
+      <DependentUpon>LoginWelcomeViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Util\FontHandler.cs" />
+    <Compile Include="Login\LoginAlreadyUserViewController.cs" />
+    <Compile Include="Login\LoginAlreadyUserViewController.designer.cs">
+      <DependentUpon>LoginAlreadyUserViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Login\LoginCreateUserViewController.cs" />
+    <Compile Include="Login\LoginCreateUserViewController.designer.cs">
+      <DependentUpon>LoginCreateUserViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Login\LoginCreateUserOptionViewController.cs" />
+    <Compile Include="Login\LoginCreateUserOptionViewController.designer.cs">
+      <DependentUpon>LoginCreateUserOptionViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Login\PaymentViewController.cs" />
+    <Compile Include="Login\PaymentViewController.designer.cs">
+      <DependentUpon>PaymentViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Util\ColorHandler.cs" />
+    <Compile Include="Util\FacebookHandler.cs" />
+    <Compile Include="Delegates\HideKeyboardTextFieldDelegate.cs" />
+    <Compile Include="UIViews\CustomerTabBarMenu.cs" />
+    <Compile Include="UIViews\CustomerTabBarMenu.designer.cs">
+      <DependentUpon>CustomerTabBarMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="News\NewsListViewController.cs" />
+    <Compile Include="News\NewsListViewController.designer.cs">
+      <DependentUpon>NewsListViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Salon\SalonListViewController.cs" />
+    <Compile Include="Salon\SalonListViewController.designer.cs">
+      <DependentUpon>SalonListViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Profile\ProfileViewController.cs" />
+    <Compile Include="Profile\ProfileViewController.designer.cs">
+      <DependentUpon>ProfileViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Salon\SalonViewController.cs" />
+    <Compile Include="Salon\SalonViewController.designer.cs">
+      <DependentUpon>SalonViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="News\NewsViewController.cs" />
+    <Compile Include="News\NewsViewController.designer.cs">
+      <DependentUpon>NewsViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Util\FileHandler.cs" />
+    <Compile Include="Salon\SalonInfoTableViewCell.cs" />
+    <Compile Include="Salon\SalonInfoTableViewCell.designer.cs">
+      <DependentUpon>SalonInfoTableViewCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Salon\SalonListTableViewCell.cs" />
+    <Compile Include="Salon\SalonListTableViewCell.designer.cs">
+      <DependentUpon>SalonListTableViewCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Salon\SalonTopTableViewCell.cs" />
+    <Compile Include="Salon\SalonTopTableViewCell.designer.cs">
+      <DependentUpon>SalonTopTableViewCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="News\NewsListTableViewCell.cs" />
+    <Compile Include="News\NewsListTableViewCell.designer.cs">
+      <DependentUpon>NewsListTableViewCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UIViews\BorderButton.cs" />
+    <Compile Include="UIViews\BorderButton.designer.cs">
+      <DependentUpon>BorderButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UIViews\UCTextfieldView.cs" />
+    <Compile Include="UIViews\UCTextfieldView.designer.cs">
+      <DependentUpon>UCTextfieldView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Util\ImageHandler.cs" />
+    <Compile Include="Login\LoginSelectPaymentViewController.cs" />
+    <Compile Include="Login\LoginSelectPaymentViewController.designer.cs">
+      <DependentUpon>LoginSelectPaymentViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Login\LoginPaymentCompletionViewController.cs" />
+    <Compile Include="Login\LoginPaymentCompletionViewController.designer.cs">
+      <DependentUpon>LoginPaymentCompletionViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Login\LoginManualViewController.cs" />
+    <Compile Include="Login\LoginManualViewController.designer.cs">
+      <DependentUpon>LoginManualViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UIViews\GreenButton.cs" />
+    <Compile Include="UIViews\GreenButton.designer.cs">
+      <DependentUpon>GreenButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Login\LoginForgotPasswordViewController.cs" />
+    <Compile Include="Login\LoginForgotPasswordViewController.designer.cs">
+      <DependentUpon>LoginForgotPasswordViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Login\LoginForgotPasswordConfirmationViewController.cs" />
+    <Compile Include="Login\LoginForgotPasswordConfirmationViewController.designer.cs">
+      <DependentUpon>LoginForgotPasswordConfirmationViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UIViews\CheckboxButton.cs" />
+    <Compile Include="UIViews\CheckboxButton.designer.cs">
+      <DependentUpon>CheckboxButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UIViews\UnderlinedTextButton.cs" />
+    <Compile Include="UIViews\UnderlinedTextButton.designer.cs">
+      <DependentUpon>UnderlinedTextButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LoadingViewController.cs" />
+    <Compile Include="LoadingViewController.designer.cs">
+      <DependentUpon>LoadingViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Util\LocationHandler.cs" />
+    <Compile Include="Salon\SalonBenefitContentTableViewCell.cs" />
+    <Compile Include="Salon\SalonBenefitContentTableViewCell.designer.cs">
+      <DependentUpon>SalonBenefitContentTableViewCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Salon\SalonBenefitDetailsTableViewCell.cs" />
+    <Compile Include="Salon\SalonBenefitDetailsTableViewCell.designer.cs">
+      <DependentUpon>SalonBenefitDetailsTableViewCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Salon\SalonBenefitHeaderTableViewCell.cs" />
+    <Compile Include="Salon\SalonBenefitHeaderTableViewCell.designer.cs">
+      <DependentUpon>SalonBenefitHeaderTableViewCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popups\VoucherView.cs" />
+    <Compile Include="Popups\VoucherView.designer.cs">
+      <DependentUpon>VoucherView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AdminViewController.cs" />
+    <Compile Include="Admin\AdminViewController.designer.cs">
+      <DependentUpon>AdminViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Profile\ProfileUserInformationViewController.cs" />
+    <Compile Include="Profile\ProfileUserInformationViewController.designer.cs">
+      <DependentUpon>ProfileUserInformationViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popups\ScanVoucherView.cs" />
+    <Compile Include="Popups\ScanVoucherView.designer.cs">
+      <DependentUpon>ScanVoucherView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Salon\MapViewController.cs" />
+    <Compile Include="Salon\MapViewController.designer.cs">
+      <DependentUpon>MapViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Salon\WebsiteViewController.cs" />
+    <Compile Include="Salon\WebsiteViewController.designer.cs">
+      <DependentUpon>WebsiteViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popups\BookingView.cs" />
+    <Compile Include="Popups\BookingView.designer.cs">
+      <DependentUpon>BookingView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popups\SalonRatingView.cs" />
+    <Compile Include="Popups\SalonRatingView.designer.cs">
+      <DependentUpon>SalonRatingView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popups\AdminSelectionView.cs" />
+    <Compile Include="Popups\AdminSelectionView.designer.cs">
+      <DependentUpon>AdminSelectionView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Salon\SalonOpeningHoursTableViewCell.cs" />
+    <Compile Include="Salon\SalonOpeningHoursTableViewCell.designer.cs">
+      <DependentUpon>SalonOpeningHoursTableViewCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UIViews\MultilineBorderButton.cs" />
+    <Compile Include="UIViews\MultilineBorderButton.designer.cs">
+      <DependentUpon>MultilineBorderButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popups\LogoutView.cs" />
+    <Compile Include="Popups\LogoutView.designer.cs">
+      <DependentUpon>LogoutView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popups\BuyExtraView.cs" />
+    <Compile Include="Popups\BuyExtraView.designer.cs">
+      <DependentUpon>BuyExtraView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UIViews\RoundImage.cs" />
+    <Compile Include="UIViews\RoundImage.designer.cs">
+      <DependentUpon>RoundImage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UIViews\NotificationView.cs" />
+    <Compile Include="UIViews\NotificationView.designer.cs">
+      <DependentUpon>NotificationView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Profile\PaymentHistoryContentTableViewCell.cs" />
+    <Compile Include="Profile\PaymentHistoryContentTableViewCell.designer.cs">
+      <DependentUpon>PaymentHistoryContentTableViewCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Profile\PaymentHistoryTitleTableViewCell.cs" />
+    <Compile Include="Profile\PaymentHistoryTitleTableViewCell.designer.cs">
+      <DependentUpon>PaymentHistoryTitleTableViewCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Profile\VisitorHistoryContentTableViewCell.cs" />
+    <Compile Include="Profile\VisitorHistoryContentTableViewCell.designer.cs">
+      <DependentUpon>VisitorHistoryContentTableViewCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Profile\VisitorHistoryTitleTableViewCell.cs" />
+    <Compile Include="Profile\VisitorHistoryTitleTableViewCell.designer.cs">
+      <DependentUpon>VisitorHistoryTitleTableViewCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Profile\ProfileChangeSubscriptionViewController.cs" />
+    <Compile Include="Profile\ProfileChangeSubscriptionViewController.designer.cs">
+      <DependentUpon>ProfileChangeSubscriptionViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UIViews\SelectSubscriptionView.cs" />
+    <Compile Include="UIViews\SelectSubscriptionView.designer.cs">
+      <DependentUpon>SelectSubscriptionView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popups\DeleteUserView.cs" />
+    <Compile Include="Popups\DeleteUserView.designer.cs">
+      <DependentUpon>DeleteUserView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AdminRegisterAbsenceViewController.cs" />
+    <Compile Include="Admin\AdminRegisterAbsenceViewController.designer.cs">
+      <DependentUpon>AdminRegisterAbsenceViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popups\SelectDateView.cs" />
+    <Compile Include="Popups\SelectDateView.designer.cs">
+      <DependentUpon>SelectDateView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Util\AnimationHandler.cs" />
+    <Compile Include="Popups\UpdateAppView.cs" />
+    <Compile Include="Popups\UpdateAppView.designer.cs">
+      <DependentUpon>UpdateAppView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popups\UpgradeDowngradeView.cs" />
+    <Compile Include="Popups\UpgradeDowngradeView.designer.cs">
+      <DependentUpon>UpgradeDowngradeView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UIViews\SelectDistanceView.cs" />
+    <Compile Include="UIViews\SelectDistanceView.designer.cs">
+      <DependentUpon>SelectDistanceView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popups\MessageView.cs" />
+    <Compile Include="Popups\MessageView.designer.cs">
+      <DependentUpon>MessageView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popups\LoadingView.cs" />
+    <Compile Include="Popups\LoadingView.designer.cs">
+      <DependentUpon>LoadingView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Util\KeyboardHandler.cs" />
+    <Compile Include="Util\ConstraintConstants.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Fonts\Proxima-Nova-Regular.otf" />
+    <BundleResource Include="Resources\Fonts\Proxima-Nova-Regular-Italic.otf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </BundleResource>
+    <BundleResource Include="Resources\Fonts\Proxima-Nova-Semibold.otf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </BundleResource>
+    <BundleResource Include="Resources\Fonts\Proxima-Nova-Extrabold-Italic.otf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </BundleResource>
+    <BundleResource Include="Resources\Fonts\Proxima-Nova-Extrabold.otf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </BundleResource>
+    <BundleResource Include="Resources\Fonts\Proxima-Nova-Black-Italic.otf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </BundleResource>
+    <BundleResource Include="Resources\Fonts\Proxima-Nova-Bold.otf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </BundleResource>
+    <BundleResource Include="Resources\Fonts\Proxima-Nova-Light.otf" />
+    <BundleResource Include="Resources\google-maps-grey-style.json" />
+    <BundleResource Include="Resources\Sounds\confirm_action_sound.mp3" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\Videos\video.mp4" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
+  <Import Project="..\packages\Xamarin.Build.Download.0.4.7\build\Xamarin.Build.Download.targets" Condition="Exists('..\packages\Xamarin.Build.Download.0.4.7\build\Xamarin.Build.Download.targets')" />
+  <Import Project="..\packages\Xamarin.Google.iOS.Maps.2.5.0\build\Xamarin.Google.iOS.Maps.targets" Condition="Exists('..\packages\Xamarin.Google.iOS.Maps.2.5.0\build\Xamarin.Google.iOS.Maps.targets')" />
+</Project>
