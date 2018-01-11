@@ -50,5 +50,7 @@
 	<string>Location for closest weather.</string>
 	<key>CFBundleName</key>
 	<string>MyWeather.iOS</string>
+	<key>NSCalendarsUsageDescription</key>
+	<string>Plugin usage</string>
 </dict>
 </plist>
