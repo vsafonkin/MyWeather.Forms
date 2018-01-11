@@ -39,7 +39,7 @@
     <ConsolePause>false</ConsolePause>
     <CodesignKey>iPhone Distribution: Yury Nevalenny (AR36AR2PBF)</CodesignKey>
     <LangVersion>7.1</LangVersion>
-    <CodesignProvision>Pirate Spaceship Apps Comma</CodesignProvision>
+    <CodesignProvision>Automatic:AppStore</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>full</DebugType>
@@ -78,6 +78,19 @@
     <DeviceSpecificBuild>False</DeviceSpecificBuild>
     <MtouchI18n />
     <LangVersion>7.1</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'AppStore|iPhone' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\iPhone\AppStore</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <MtouchArch>ARMv7, ARM64</MtouchArch>
+    <ConsolePause>false</ConsolePause>
+    <CodesignKey>iPhone Distribution: Yury Nevalenny (AR36AR2PBF)</CodesignKey>
+    <LangVersion>7.1</LangVersion>
+    <CodesignProvision>Automatic:AppStore</CodesignProvision>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
