@@ -3,11 +3,11 @@ namespace MyWeather.Shared
 {
     public class MyClass
     {
-        Func<string, bool> whereClause = default;
+        //Func<string, bool> whereClause = default;
 
         public MyClass()
         {
-            Console.WriteLine(whereClause("Test").ToString());
+            //Console.WriteLine(whereClause("Test").ToString());
         }
     }
 }
