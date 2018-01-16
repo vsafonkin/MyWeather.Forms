@@ -35,7 +35,7 @@
     <AndroidLinkMode>None</AndroidLinkMode>
     <ConsolePause>false</ConsolePause>
     <EmbedAssembliesIntoApk>true</EmbedAssembliesIntoApk>
-    <LangVersion>7.1</LangVersion>
+    <LangVersion>Default</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType></DebugType>
@@ -51,7 +51,7 @@
     <AndroidSigningKeyPass>sandbox</AndroidSigningKeyPass>
     <AndroidLinkMode>SdkOnly</AndroidLinkMode>
     <JavaMaximumHeapSize>1G</JavaMaximumHeapSize>
-    <LangVersion>7.1</LangVersion>
+    <LangVersion>Default</LangVersion>
     <EmbedAssembliesIntoApk>true</EmbedAssembliesIntoApk>
     <BundleAssemblies>true</BundleAssemblies>
   </PropertyGroup>
