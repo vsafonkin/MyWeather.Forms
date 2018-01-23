@@ -1,1 +1,1 @@
-cat ./MyWeather.csproj
+cat ./../MyWeather/MyWeather.csproj
