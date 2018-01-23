@@ -1,0 +1,1 @@
+cat ./MyWeather/MyWeather.csproj
