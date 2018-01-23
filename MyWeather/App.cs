@@ -9,6 +9,8 @@ namespace MyWeather
     {
         public App()
         {
+            var csharp7 = new CsharpSevenFeatures("User1");
+            
             var tabs = new TabbedPage
             {
                 Title ="My Weather",
