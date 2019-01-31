@@ -37,7 +37,7 @@
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <MtouchArch>ARMv7, ARM64</MtouchArch>
     <ConsolePause>false</ConsolePause>
-    <CodesignKey>iPhone Distribution: Yury Nevalenny (AR36AR2PBF)</CodesignKey>
+    <CodesignKey>iPhone Distribution: Maxim Lobanov (UBF8T346G9)</CodesignKey>
     <LangVersion>7.1</LangVersion>
     <CodesignProvision>Automatic:AppStore</CodesignProvision>
   </PropertyGroup>
@@ -64,7 +64,7 @@
     <MtouchArch>ARMv7, ARM64</MtouchArch>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <MtouchProfiling>True</MtouchProfiling>
-    <CodesignKey>iPhone Developer: James Montemagno (AMVKNEC6W3)</CodesignKey>
+    <CodesignKey>iPhone Developer: Maxim Lobanov (UBF8T346G9)</CodesignKey>
     <MtouchDebug>True</MtouchDebug>
     <CodesignProvision />
     <CodesignResourceRules />
@@ -88,7 +88,7 @@
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <MtouchArch>ARMv7, ARM64</MtouchArch>
     <ConsolePause>false</ConsolePause>
-    <CodesignKey>iPhone Distribution: Yury Nevalenny (AR36AR2PBF)</CodesignKey>
+    <CodesignKey>iPhone Distribution: Maxim Lobanov (UBF8T346G9)</CodesignKey>
     <LangVersion>7.1</LangVersion>
     <CodesignProvision>Automatic:AppStore</CodesignProvision>
   </PropertyGroup>
