@@ -1,1 +1,1 @@
-ls $(build.artifactstagingdirectory)/build/
+env
